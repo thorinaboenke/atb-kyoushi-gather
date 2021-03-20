@@ -1,2 +1,10 @@
 ---
 # tasks file for kyoushi-gather
+- include: local_setup.yml
+  tags: [prepare]
+
+- include: fetch.yml
+  tags: [fetch]
+
+- include: facts.yml
+  tags: [facts]

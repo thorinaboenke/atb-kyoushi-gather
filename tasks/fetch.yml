@@ -1,0 +1,29 @@
+- name: Get log files
+  ansible.posix.synchronize:
+    src: "{{ item }}"
+    dest: "{{ kyoushi_gather_logs_dir }}"
+    mode: pull
+    copy_links: yes
+    delete: yes
+    recursive: yes
+    use_ssh_args: yes
+    times: yes
+    perms: no
+  become: yes
+  ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
+  loop: "{{ kyoushi_gather_logs }}"
+
+- name: Get config files
+  ansible.posix.synchronize:
+    src: "{{ item }}"
+    dest: "{{ kyoushi_gather_configs_dir }}/"
+    mode: pull
+    copy_links: yes
+    delete: yes
+    recursive: yes
+    use_ssh_args: yes
+    times: yes
+    perms: no
+  become: yes
+  ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
+  loop: "{{ kyoushi_gather_configs }}"
