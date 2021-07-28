@@ -1,8 +1,8 @@
 galaxy_info:
+  role_name: kyoushi-gather
   author: Maximilian Frank
   description: Gathers log files, configuration files and facts about hosts.
   company: AIT Austrian Institute of Technology
-
 
   license: GPL-3.0
 
