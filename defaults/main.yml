@@ -10,6 +10,7 @@ kyoushi_gather_ignore_facts_base:
   - inventory_dir
   - inventory_file
   - omit
+kyoushi_gather_save_facts: yes
 
 kyoushi_gather_ignore_facts: "{{ (kyoushi_gather_ignore_facts_base + kyoushi_gather_ignore_facts_extra) | join('|') }}"
 kyoushi_gather_fact_keys: "{{ hostvars[inventory_hostname].keys() | reject('match', kyoushi_gather_ignore_facts) | list }}"
@@ -39,4 +40,3 @@ kyoushi_gather_logs:
 
 kyoushi_gather_configs:
     - /etc
-

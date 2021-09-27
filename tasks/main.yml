@@ -8,3 +8,4 @@
 
 - include: facts.yml
   tags: [facts]
+  when: kyoushi_gather_save_facts|bool
