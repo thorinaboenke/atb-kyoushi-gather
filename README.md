@@ -21,6 +21,23 @@ for generating data for intrusion detection system datasets.
       - /etc
 ```
 
+## Example Playbook with excludes
+```
+- hosts: localhost
+  roles:
+    - kyoushi-gather
+  vars:
+    kyoushi_gather_logs:
+      - src: /var/log
+        exclude:
+          - *.pcap*
+    kyoushi_gather_configs:
+      - src: /etc
+        exclude:
+          - *.bk
+```
+
+
 ## License
 
 GPL-3.0
