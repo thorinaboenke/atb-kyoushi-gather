@@ -1,6 +1,6 @@
 - name: Get log files
   ansible.posix.synchronize:
-    src: "{{ item }}"
+    src: "{{ item.src }}"
     dest: "{{ kyoushi_gather_logs_dir }}"
     mode: pull
     copy_links: yes
@@ -9,13 +9,14 @@
     use_ssh_args: yes
     times: yes
     perms: no
+    rsync_opts: "{{ item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list }}"
   become: yes
   ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
-  loop: "{{ kyoushi_gather_logs }}"
+  loop: "{{ __kyoushi_gather_logs }}"
 
 - name: Get config files
   ansible.posix.synchronize:
-    src: "{{ item }}"
+    src: "{{ item.src }}"
     dest: "{{ kyoushi_gather_configs_dir }}/"
     mode: pull
     copy_links: yes
@@ -24,6 +25,7 @@
     use_ssh_args: yes
     times: yes
     perms: no
+    rsync_opts: "{{ item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list }}"
   become: yes
   ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
-  loop: "{{ kyoushi_gather_configs }}"
+  loop: "{{ __kyoushi_gather_configs }}"
