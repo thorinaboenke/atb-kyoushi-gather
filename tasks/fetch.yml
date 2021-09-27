@@ -9,7 +9,7 @@
     use_ssh_args: yes
     times: yes
     perms: no
-    rsync_opts: "{{ item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list }}"
+    rsync_opts: "{{ kyoushi_gather_rsync_extra_options + (item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list) }}"
   become: yes
   ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
   loop: "{{ __kyoushi_gather_logs }}"
@@ -25,7 +25,7 @@
     use_ssh_args: yes
     times: yes
     perms: no
-    rsync_opts: "{{ item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list }}"
+    rsync_opts: "{{ kyoushi_gather_rsync_extra_options + (item.exclude | default([]) | map('regex_replace', '(.*)', '--exclude=\\1') | list) }}"
   become: yes
   ignore_errors: "{{ kyoushi_gather_ignore_errors }}"
   loop: "{{ __kyoushi_gather_configs }}"
