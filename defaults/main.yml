@@ -1,6 +1,13 @@
 ---
 # defaults file for kyoushi-gather
+kyoushi_gather_rsync_use_ssh_args: true
 kyoushi_gather_rsync_extra_options: []
+kyoushi_gather_rsync_copy_links: true
+kyoushi_gather_rsync_delete: true
+kyoushi_gather_rsync_recursive: true
+kyoushi_gather_rsync_times: true
+kyoushi_gather_rsync_perms: false
+
 kyoushi_gather_ignore_errors: no
 kyoushi_gather_ignore_facts_extra: []
 kyoushi_gather_ignore_facts_base:
