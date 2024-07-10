@@ -8,9 +8,9 @@
   ansible.builtin.service_facts:
   become: yes
 
-- name: Gather port listen facts
-  community.general.listen_ports_facts:
-  become: yes
+  # - name: Gather port listen facts
+  #   community.general.listen_ports_facts:
+  #   become: yes
 
 - name: Save fact information
   local_action:
